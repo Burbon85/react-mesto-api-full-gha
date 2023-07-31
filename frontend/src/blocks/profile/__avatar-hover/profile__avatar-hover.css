@@ -1,0 +1,35 @@
+.profile__avatar-hover {
+    border-radius: 60px;
+    position: relative;
+    padding: 0;
+    width: 120px;
+    height: 120px;   
+}
+
+
+.profile__avatar-hover::after {
+    background-image: url(../../../images/avatarRedact.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: opacity 1s linear 0.1s;
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.profile__avatar-hover:hover::after {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 1050px) {
+    .profile__avatar-hover {
+        margin: 0 auto;
+    }
+}

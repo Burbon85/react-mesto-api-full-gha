@@ -1,0 +1,12 @@
+.element__button {
+    background:url(../../../images/like.svg);
+    width: 22px;
+    height: 19px;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.element__button:hover {
+    opacity: 0.5;
+}

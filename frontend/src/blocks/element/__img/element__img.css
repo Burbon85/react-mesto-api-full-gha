@@ -1,0 +1,5 @@
+.element__img {
+    margin: 0 0 25px;
+    height: 282px;
+    object-fit: cover;
+}
