@@ -19,7 +19,7 @@ const { generateToken } = require('../utils/token');
 const getUsers = (req, res, next) => {
   User.find()
     .then((users) => {
-      res.status(OK).send(users);
+      res.send(users);
     })
     .catch(next);
 };
@@ -35,12 +35,11 @@ const getUserMe = (req, res, next) => {
 const getUser = (req, res, next) => {
   const { userid } = req.params;
   User.findById(userid)
-    .then((user) => {
-      if (!user) {
-        throw new NotFoundError('Пользователь не найден');
-      } else {
-        res.status(OK).send(user);
-      }
+    .orFail(() => {
+      throw new NotFoundError('Пользователь не найден');
+    })
+    .then((users) => {
+      res.status(OK).send(users);
     })
     .catch((e) => {
       if (e.name === 'CastError') {
@@ -128,6 +127,7 @@ const updateAvatar = (req, res, next) => {
 
 const login = (req, res, next) => {
   const { email, password } = req.body;
+  // console.log(process.env, req.headers);
 
   return User.findUserByCredentials(email, password)
     .then((user) => {

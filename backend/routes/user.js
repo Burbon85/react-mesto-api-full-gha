@@ -9,6 +9,7 @@ const {
   createUser,
   updateUser,
   updateAvatar,
+  getUserMe,
 } = require('../controllers/user');
 
 const regex = /http[s]?:\/\/(www.)?[a-zA-Z0-9-._~:/?#'()*+,;[\]@!$&=]*#?$/;
@@ -27,6 +28,8 @@ const validationUpdateAvatar = celebrate({
 });
 
 router.get('/', getUsers);
+
+router.get('/me', getUserMe);
 
 router.get('/:userId', celebrate({ params: Joi.object().keys({ userId: Joi.string().hex().length(24).required() }) }), getUser);
 

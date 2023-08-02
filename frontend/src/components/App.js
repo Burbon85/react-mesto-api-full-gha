@@ -40,6 +40,7 @@ function App() {
   const [isInfoTooltipOpen, setInfoTooltipOpen] = useState(false);
 
   useEffect(() => {
+    api.getToken();
     if (loggedIn) {
       api
         .getNeededAll()
@@ -60,13 +61,12 @@ function App() {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       // проверим токен
-      auth
-        .getContent(jwt)
+      auth.getContent(jwt)
         .then((response) => {
           // авторизуем пользователя
           setLoggedIn(true);
           setUserData({
-            email: response.data.email,
+            email: response.email,
           });
           navigate("/");
         })
@@ -98,8 +98,10 @@ function App() {
         localStorage.setItem("jwt", response.token);
         setLoggedIn(true);
         setUserData({
+          password: password,
           email: email,
         });
+        api.getToken();
         navigate("/");
       })
       .catch((error) => {

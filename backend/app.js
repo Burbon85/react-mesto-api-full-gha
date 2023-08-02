@@ -1,4 +1,5 @@
 require('dotenv').config();
+const cors = require('cors');
 
 const express = require('express');
 
@@ -15,7 +16,6 @@ const routes = require('./routes');
 const { createUser, login } = require('./controllers/user');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('cors');
 
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {

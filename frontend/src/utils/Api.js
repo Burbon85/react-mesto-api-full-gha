@@ -90,6 +90,14 @@ class Api {
     })
     .then(this._getResponseData);
   }
+
+  getToken() {
+    this._headers.authorization = `Bearer ${localStorage.getItem('jwt')}`;
+  }
+
+  setToken() {
+    return this._headers.authorization;
+  }
 }
 
 const api = new Api({

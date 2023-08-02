@@ -24,7 +24,8 @@ const createCard = (req, res, next) => {
   const { name, link } = req.body;
   Card.create({ name, link, owner: req.user._id })
     .then((card) => {
-      res.status(CREATED).send(card);
+      card.populate(['owner'])
+        .then((cardPopulate) => res.status(CREATED).send(cardPopulate));
     })
     .catch((e) => {
       if (e.name === 'ValidationError') {
@@ -41,7 +42,7 @@ const deleteCard = (req, res, next) => {
         throw new NotFoundError('Такой карточки нет');
       }
       if (`${card.owner}` !== req.user._id) {
-        next(new ForbiddenError('Нет доступа на удаление чужой карточки'));
+        throw new ForbiddenError('Нет доступа на удаление чужой карточки');
       }
       return Card.deleteOne()
         .then(() => res.status(OK).send(card));

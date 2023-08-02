@@ -27,14 +27,16 @@ class Auth {
         body: JSON.stringify({ password, email }),
       }).then(this._getResponse);
     }
-    getContent(JWT) {
+    
+    getContent(token) {
       return fetch(`${this._url}/users/me`, {
         method: "GET",
         headers: {
+          "Accept": "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${JWT}`,
+          Authorization: `Bearer ${token}`,
         },
-      }) .then(this._getResponse);
+      }).then(this._getResponse);
     }
   }
   
