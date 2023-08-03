@@ -101,10 +101,8 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'http://localhost:3005',
-  // baseUrl: "https://mesto.nomoreparties.co/v1/cohort-64",
+  baseUrl: 'http://api.mesto-practicum.nomoreparties.co',
   headers: {
-    // authorization: "68cde520-ac6c-40b9-a1ad-21ed7cb7863b",
     "Content-Type": "application/json",
   },
 });

@@ -41,8 +41,7 @@ class Auth {
   }
   
   const auth = new Auth({
-    BASE_URL: 'http://localhost:3005',
-    // BASE_URL: "https://auth.nomoreparties.co",
+    BASE_URL: 'http://api.mesto-practicum.nomoreparties.co',
     headers: { "Content-Type": "application/json" },
   });
   
