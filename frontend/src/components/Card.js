@@ -39,6 +39,7 @@ function Card({ card, onCardClick, onImagePopup, handleLikeClick, handleDeleteCl
       {isOwn && (
         <button
           className="element__button_trash"
+          type="button"
           onClick={() => {
             handleDeleteClick(card);
           }}

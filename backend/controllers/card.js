@@ -50,6 +50,7 @@ const deleteCard = (req, res, next) => {
     .catch((e) => {
       if (e.name === 'CastError') {
         next(new BadRequestError('Неверно заполнены поля'));
+        console.log(e);
         return;
       } next(e);
     });

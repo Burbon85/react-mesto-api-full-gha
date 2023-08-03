@@ -149,6 +149,7 @@ function App() {
         setCards((state) => state.filter((c) => c._id !== card._id));
       })
       .catch((err) => console.log(err));
+      // console.log(card._id);
   }
 
   function handleUpdateUser({ name, about }) {
