@@ -9,7 +9,7 @@ const cardRouter = require('./card');
 
 routes.use('/users', auth, userRouter);
 routes.use('/cards', auth, cardRouter);
-routes.use('*', (req, res, next) => {
+routes.use('*', auth, (req, res, next) => {
   next(new NotFoundError('URL не существует'));
 });
 

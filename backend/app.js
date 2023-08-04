@@ -29,6 +29,8 @@ app.use(requestLogger);
 
 app.use(express.json());
 
+app.use(helmet());
+
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
@@ -50,8 +52,6 @@ app.post('/signup', express.json(), celebrate({
     password: Joi.string().min(8).required(),
   }),
 }), createUser);
-
-app.use(helmet());
 
 app.use('/', routes);
 

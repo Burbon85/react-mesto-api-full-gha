@@ -1,4 +1,4 @@
-const http2 = require('node:http2');
+// const http2 = require('node:http2');
 
 const mongoose = require('mongoose');
 
@@ -6,7 +6,7 @@ const validator = require('validator');
 
 const bcrypt = require('bcrypt');
 
-const Unauthorized = http2.constants.HTTP_STATUS_UNAUTHORIZED;
+const Unauthorized = require('../errors/UnauthorizedError');
 
 const userSchema = new mongoose.Schema({
   name: { // у пользователя есть имя — опишем требования к имени в схеме:
