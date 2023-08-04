@@ -11,6 +11,6 @@
 
 IP-адрес 51.250.90.176
 
-Frontend http://mesto-practicum.nomoreparties.co
+Frontend https://mesto-practicum.nomoreparties.co
 
-Backend http://api.mesto-practicum.nomoreparties.co
+Backend https://api.mesto-practicum.nomoreparties.co
